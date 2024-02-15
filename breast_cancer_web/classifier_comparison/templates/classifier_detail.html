@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Classifier Detail{% endblock %}
+
+{% block content %}
+  <div class="classifier">
+    <h2>{{ classifier.name }}</h2>
+    <p>{{ classifier.short_description }}</p>
+    <h3>Hyperparameters</h3>
+    <div class="hyperparameters">
+      {% for key, value in classifier.hyperparameters.items %}
+        <div class="hyperparameter">
+          <strong>{{ key }}:</strong> {{ value }}
+        </div>
+      {% endfor %}
+    </div>
+    <h3>Ensemble</h3>
+    <p>{{ classifier.ensemble|yesno:"Yes,No" }}</p>
+  </div>
+{% endblock %}
