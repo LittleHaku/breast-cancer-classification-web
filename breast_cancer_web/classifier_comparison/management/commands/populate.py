@@ -1,5 +1,4 @@
-# classifier_comparison/management/commands/populate.py
-
+import json
 from django.core.management.base import BaseCommand
 from classifier_comparison.models import Classifier
 
@@ -8,102 +7,14 @@ class Command(BaseCommand):
     help = 'Populates the database with initial data'
 
     def handle(self, *args, **options):
+        # Load classifiers from JSON file
+        with open('classifiers.json', 'r') as f:
+            classifiers = json.load(f)
 
-        classifiers = [
-            {
-                'name': 'Logistic Regression',
-                'short_description': 'This is a statistical model that uses a logistic function to model a binary dependent variable. It’s used when the response variable is categorical in nature.',
-                'hyperparameters': "{'C': 4.641588833612777, 'class_weight': None, 'fit_intercept': True, 'intercept_scaling': 0.05994842503189409, 'max_iter': 250, 'penalty': 'l1', 'solver': 'liblinear', 'tol': 0.07000000000000002}",
-                'ensemble': False
-            },
-            {
-                'name': 'Multi-layer Perceptron',
-                'short_description': 'This is a class of feedforward artificial neural network. An MLP consists of at least three layers of nodes: an input layer, a hidden layer and an output layer.',
-                'hyperparameters': "{'activation': 'tanh', 'alpha': 0.009994798078019692, 'hidden_layer_sizes': 17, 'max_iter': 2500, 'solver': 'lbfgs'}",
-                'ensemble': False
-            },
-            {
-                'name': 'Stochastic Gradient Descent',
-                'short_description': 'This is a simple and very efficient approach to fit linear models. It is particularly useful when the number of samples is very large.',
-                'hyperparameters': "{'alpha': 0.00017948229213792888, 'class_weight': {1: 0.5, 0: 0.5}, 'eta0': 0.23778172582285131, 'learning_rate': 'invscaling', 'loss': 'hinge', 'max_iter': 1000, 'penalty': 'elasticnet'}",
-                'ensemble': False
-            },
-            {
-                'name': 'Support Vector Machine',
-                'short_description': 'This is a type of machine learning model used for classification and regression analysis. It separates data points using a hyperplane with the largest amount of margin.',
-                'hyperparameters': "{'C': 2.1544346900318834, 'cache_size': 10.0, 'coef0': 100000.0, 'degree': 1, 'gamma': 0.03162277660168379, 'kernel': 'poly', 'max_iter': 3000, 'shrinking': True, 'tol': 0.0001}",
-                'ensemble': False
-            },
-            {
-                'name': 'K-Nearest Neighbors',
-                'short_description': 'This is a type of instance-based learning, or lazy learning, where the function is only approximated locally and all computation is deferred until function evaluation',
-                'hyperparameters': "{'algorithm': 'auto', 'leaf_size': 4, 'metric': 'manhattan', 'n_neighbors': 5, 'p': 1, 'weights': 'uniform'}",
-                'ensemble': False
-            },
-            {
-                'name': 'Linear Discriminant Analysis',
-                'short_description': 'This is a method used in statistics, pattern recognition, and machine learning to find a linear combination of features that characterizes or separates two or more classes of objects or events.',
-                'hyperparameters': "{'priors': [0.4, 0.6], 'shrinkage': 0.11875000000000002, 'solver': 'lsqr', 'tol': 9.999999999999999e-05}",
-                'ensemble': False
-            },
-            {
-                'name': 'Quadratic Discriminant Analysis',
-                'short_description': 'This is a variant of LDA that allows for quadratic boundaries instead of only linear boundaries in the feature space.',
-                'hyperparameters': "{'priors': [0.4, 0.6], 'reg_param': 0.5125, 'tol': 9.999999999999999e-06}",
-                'ensemble': False
-            },
-            {
-                'name': 'Decision Tree',
-                'short_description': 'This is a flowchart-like structure in which each internal node represents a feature(or attribute), each branch represents a decision rule, and each leaf node represents an outcome',
-                'hyperparameters': "{'criterion': 'entropy', 'max_depth': 25, 'max_features': 0.6299605249474365, 'max_leaf_nodes': 19, 'min_samples_split': 8, 'splitter': 'best'}",
-                'ensemble': False
-            },
-            {
-                'name': 'Gaussian Naive Bayes',
-                'short_description': 'This is a variant of Naive Bayes that follows Gaussian normal distribution and supports continuous data',
-                'hyperparameters': "{'priors': [0.3, 0.7], 'var_smoothing': 0.05805225516094899}",
-                'ensemble': False
-            },
-            {
-                'name': 'Gradient Boosting',
-                'short_description': 'This is a machine learning technique for regression and classification problems, which produces a prediction model in the form of an ensemble of weak prediction models, typically decision trees.s',
-                'hyperparameters': "{'learning_rate': 0.07000000000000002, 'max_depth': 2, 'max_features': None, 'min_samples_split': 21, 'n_estimators': 475, 'subsample': 0.7000000000000001}",
-                'ensemble': True
-            },
-            {
-                'name': 'Ada Boost',
-                'short_description': 'This is a boosting algorithm which constructs a classifier. As you probably remember, a classifier takes a bunch of data and attempts to predict or classify which class a new data element belongs to.',
-                'hyperparameters': "{'learning_rate': 1.1142857142857143, 'n_estimators': 262}",
-                'ensemble': True
-            },
-            {
-                'name': 'Random Forest',
-                'short_description': 'This is a meta estimator that fits a number of decision tree classifiers on various sub-samples of the dataset and uses averaging to improve the predictive accuracy and control over-fitting.',
-                'hyperparameters': "{'criterion': 'entropy', 'max_depth': 25, 'max_features': None, 'min_samples_split': 3, 'n_estimators': 54}",
-                'ensemble': True
-            },
-            {
-                'name': 'Voting Classifier',
-                'short_description': 'This is a machine learning model that trains on an ensemble of numerous models and predicts an output (class) based on their highest probability of chosen class as the output.',
-                'hyperparameters': "{'estimators': [('lr', LogisticRegression(C=4.641588833612777, intercept_scaling=0.05994842503189409, max_iter=250, penalty='l1', random_state=22, solver='liblinear', tol=0.07000000000000002)), ('mlp', MLPClassifier(activation='tanh', alpha=0.009994798078019692, hidden_layer_sizes=17, max_iter=2500, random_state=22, solver='lbfgs'))], 'voting': 'hard'}",
-                'ensemble': True
-            },
-            {
-                'name': 'Bagging Classifier',
-                'short_description': 'This is an ensemble meta-estimator that fits base classifiers each on random subsets of the original dataset and then aggregate their individual predictions (either by voting or by averaging) to form a final prediction.',
-                'hyperparameters': "{'bootstrap': False, 'bootstrap_features': False, 'max_features': 0.9, 'max_samples': 0.7000000000000001, 'n_estimators': 129, 'oob_score': False}",
-                'ensemble': True
-            },
-            {
-                'name': 'Stacking Classifier',
-                'short_description': 'This is an ensemble learning technique to combine multiple classification models via a meta-classifier. The individual classification models are trained based on the complete training set; then, the meta-classifier is fitted based on the outputs – meta-features – of the individual classification models in the ensemble.',
-                'hyperparameters': "{'estimators': [('lr', LogisticRegression(C=4.641588833612777, intercept_scaling=0.05994842503189409, max_iter=250, penalty='l1', random_state=22, solver='liblinear', tol=0.07000000000000002)), ('mlp', MLPClassifier(activation='tanh', alpha=0.009994798078019692, hidden_layer_sizes=17, max_iter=2500, random_state=22, solver='lbfgs'))], 'stack_method': 'predict'}",
-                'ensemble': True
-            }
-        ]
-
-        for classifier in classifiers:
-            Classifier.objects.create(**classifier)
+        # Create Classifier objects and save them to the database
+        for classifier_data in classifiers:
+            classifier = Classifier(**classifier_data)
+            classifier.save()
 
         self.stdout.write(self.style.SUCCESS(
-            'Successfully populated the database'))
+            'Successfully populated the database with initial data'))
