@@ -10,7 +10,23 @@
     <div class="hyperparameters">
       {% for key, value in classifier.hyperparameters.items %}
         <div class="hyperparameter">
-          <strong>{{ key }}:</strong> {{ value }}
+          <strong>{{ key }}:</strong>
+          {% if key == "estimators" %}
+            {% for estimator in value %}
+              {% for name, params in estimator.items %}
+                <div class="estimator">
+                  <h4>{{ name }}</h4>
+                  {% for param_key, param_value in params.items %}
+                    <div class="param">
+                      <strong>{{ param_key }}:</strong> {{ param_value }}
+                    </div>
+                  {% endfor %}
+                </div>
+              {% endfor %}
+            {% endfor %}
+          {% else %}
+            {{ value }}
+          {% endif %}
         </div>
       {% endfor %}
     </div>

@@ -1,3 +1,5 @@
+from .models import Classifier, Metric
+from django.shortcuts import render, get_object_or_404
 import ast
 import json
 from django.http import HttpResponse
@@ -39,8 +41,18 @@ def classifier_list(request):
     return render(request, 'classifier_list.html', {'ensemble_classifiers': ensemble_classifiers, 'base_classifiers': base_classifiers})
 
 
-def classifier_detail(request, pk):
+""" def classifier_detail(request, pk):
     classifier = get_object_or_404(Classifier, pk=pk)
     # Convert the string representation of hyperparameters into a dictionary
     classifier.hyperparameters = ast.literal_eval(classifier.hyperparameters)
+    # Fetch associated metrics for the classifier
+    metrics = Metric.objects.filter(classifier=classifier)
+    return render(request, 'classifier_detail.html', {'classifier': classifier, 'metrics': metrics})
+ """
+
+
+def classifier_detail(request, pk):
+    classifier = get_object_or_404(Classifier, pk=pk)
+    # Convert the string representation of hyperparameters into a dictionary
+    classifier.hyperparameters = json.loads(classifier.hyperparameters)
     return render(request, 'classifier_detail.html', {'classifier': classifier})

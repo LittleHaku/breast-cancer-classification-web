@@ -1,0 +1,107 @@
+[
+    {
+        "classifier_name": "Logistic Regression",
+        "f1_score": 0.9865,
+        "recall": 0.9846,
+        "f2_score": 0.9853,
+        "balanced_accuracy": 0.9846
+    },
+    {
+        "classifier_name": "Multi-Layer Perceptron",
+        "f1_score": 0.9839,
+        "recall": 0.9839,
+        "f2_score": 0.9838,
+        "balanced_accuracy": 0.9839
+    },
+    {
+        "classifier_name": "Stochastic Gradient Descent",
+        "f1_score": 0.9839,
+        "recall": 0.9826,
+        "f2_score": 0.9831,
+        "balanced_accuracy": 0.9826
+    },
+    {
+        "classifier_name": "Support Vector Machine",
+        "f1_score": 0.9839,
+        "recall": 0.9826,
+        "f2_score": 0.9831,
+        "balanced_accuracy": 0.9826
+    },
+    {
+        "classifier_name": "K-Nearest Neighbors",
+        "f1_score": 0.9728,
+        "recall": 0.9691,
+        "f2_score": 0.9705,
+        "balanced_accuracy": 0.9691
+    },
+    {
+        "classifier_name": "Linear Discriminant Analysis",
+        "f1_score": 0.9703,
+        "recall": 0.9686,
+        "f2_score": 0.9691,
+        "balanced_accuracy": 0.9686
+    },
+    {
+        "classifier_name": "Quadratic Discriminant Analysis",
+        "f1_score": 0.9627,
+        "recall": 0.9652,
+        "f2_score": 0.9641,
+        "balanced_accuracy": 0.9652
+    },
+    {
+        "classifier_name": "Decision Tree",
+        "f1_score": 0.9459,
+        "recall": 0.9424,
+        "f2_score": 0.9436,
+        "balanced_accuracy": 0.9424
+    },
+    {
+        "classifier_name": "Gaussian Naive Bayes",
+        "f1_score": 0.9333,
+        "recall": 0.9364,
+        "f2_score": 0.9348,
+        "balanced_accuracy": 0.9364
+    },
+    {
+        "classifier_name": "Gradient Boosting",
+        "f1_score": 0.9758,
+        "recall": 0.9752,
+        "f2_score": 0.9754,
+        "balanced_accuracy": 0.9752
+    },
+    {
+        "classifier_name": "Ada Boost",
+        "f1_score": 0.9703,
+        "recall": 0.9691,
+        "f2_score": 0.9705,
+        "balanced_accuracy": 0.9691
+    },
+    {
+        "classifier_name": "Random Forest",
+        "f1_score": 0.9594,
+        "recall": 0.9577,
+        "f2_score": 0.9583,
+        "balanced_accuracy": 0.9577
+    },
+    {
+        "classifier_name": "Voting Classifier",
+        "f1_score": 0.9892,
+        "recall": 0.9867,
+        "f2_score": 0.9876,
+        "balanced_accuracy": 0.9867
+    },
+    {
+        "classifier_name": "Bagging Classifier",
+        "f1_score": 0.9866,
+        "recall": 0.986,
+        "f2_score": 0.9861,
+        "balanced_accuracy": 0.986
+    },
+    {
+        "classifier_name": "Stacking Classifier",
+        "f1_score": 0.9892,
+        "recall": 0.9867,
+        "f2_score": 0.9876,
+        "balanced_accuracy": 0.9867
+    }
+]
