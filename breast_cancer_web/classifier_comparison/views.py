@@ -55,4 +55,7 @@ def classifier_detail(request, pk):
     classifier = get_object_or_404(Classifier, pk=pk)
     # Convert the string representation of hyperparameters into a dictionary
     classifier.hyperparameters = json.loads(classifier.hyperparameters)
-    return render(request, 'classifier_detail.html', {'classifier': classifier})
+    # Get the metrics associated with the classifier
+    metrics = Metric.objects.filter(classifier=classifier)
+
+    return render(request, 'classifier_detail.html', {'classifier': classifier, 'metrics': metrics})

@@ -7,6 +7,17 @@
 {% block content %}
 <h2>Welcome to the Breast Cancer Classifier</h2>
 
+<p style="color: red; font-weight: bold;">
+    IMPORTANT:
+</p>
+
+<p>
+    The values that are used on this web have been obtained predicting the test set (30%), so if they differ at some
+    point from the ones in the thesis it is because, there, cross validation using just the training set was used until
+    the end was reached to avoid data leakage. All the metrics obtained here were calculated after all the classifiers
+    had been optimized and the best ones were chosen.
+</p>
+
 <h3>Features of the Breast Cancer Classifier Website</h3>
 <p>
     - Compare Classifiers: On the "Compare Classifiers" page, you can select two classifiers from a dropdown menu and

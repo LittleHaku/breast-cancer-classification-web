@@ -14,8 +14,7 @@ class Metric(models.Model):
     recall = models.FloatField()
     f2_score = models.FloatField()
     balanced_accuracy = models.FloatField()
-    confusion_matrix = models.ImageField(upload_to='confusion_matrices/')
-
-
-class GlobalShap(models.Model):
-    classifier = models.ForeignKey(Classifier, on_delete=models.CASCADE)
+    confusion_matrix = models.CharField(max_length=255)
+    global_features_plot = models.CharField(
+        max_length=255)
+    beeswarm_plot = models.CharField(max_length=255)
