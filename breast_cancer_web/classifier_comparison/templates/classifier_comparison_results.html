@@ -6,61 +6,49 @@
 
 {% block content %}
 <div class="comparison">
-    <h2>Comparison: {{ classifier1.name }} vs {{ classifier2.name }}</h2>
+    <h2>Comparison: <a href="{% url 'classifier_detail' classifier1.id %}">{{ classifier1.name }}</a> vs <a
+            href="{% url 'classifier_detail' classifier2.id %}">{{ classifier2.name }}</a></h2>
 
-    <div class="classifiers" style="display: flex; justify-content: space-between;">
-        <div class="classifier" id="classifier1" style="flex: 1; margin-right: 10px;">
-            <h3>{{ classifier1.name }}</h3>
-            <!-- Include the details for classifier1 here, similar to your detail view -->
-            {% for metric in metrics1 %}
-            <table>
-                <tr>
-                    <th>F1 Score</th>
-                    <td>{{ metric.f1_score }}</td>
-                </tr>
-                <tr>
-                    <th>Recall</th>
-                    <td>{{ metric.recall }}</td>
-                </tr>
-                <tr>
-                    <th>F2 Score</th>
-                    <td>{{ metric.f2_score }}</td>
-                </tr>
-                <tr>
-                    <th>Balanced Accuracy</th>
-                    <td>{{ metric.balanced_accuracy }}</td>
-                </tr>
-            </table>
-            <img src="{% static metric.confusion_matrix %}" alt="Confusion Matrix"
-                style="max-width: 800px; height: auto;">
-            {% endfor %}
-        </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Metric</th>
+                <th>{{ classifier1.name }}</th>
+                <th>{{ classifier2.name }}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for metric1, metric2 in metrics %}
+            <tr>
+                <td><strong>F1 Score</strong></td>
+                <td>{{ metric1.f1_score }}</td>
+                <td>{{ metric2.f1_score }}</td>
+            </tr>
+            <tr>
+                <td><strong>Recall</strong></td>
+                <td>{{ metric1.recall }}</td>
+                <td>{{ metric2.recall }}</td>
+            </tr>
+            <tr>
+                <td><strong>F2 Score</strong></td>
+                <td>{{ metric1.f2_score }}</td>
+                <td>{{ metric2.f2_score }}</td>
+            </tr>
+            <tr>
+                <td><strong>Balanced Accuracy</strong></td>
+                <td>{{ metric1.balanced_accuracy }}</td>
+                <td>{{ metric2.balanced_accuracy }}</td>
+            </tr>
 
-        <div class="classifier" id="classifier2" style="flex: 1; margin-left: 10px;">
-            <h3>{{ classifier2.name }}</h3>
-            {% for metric in metrics2 %}
-            <table>
-                <tr>
-                    <th>F1 Score</th>
-                    <td>{{ metric.f1_score }}</td>
-                </tr>
-                <tr>
-                    <th>Recall</th>
-                    <td>{{ metric.recall }}</td>
-                </tr>
-                <tr>
-                    <th>F2 Score</th>
-                    <td>{{ metric.f2_score }}</td>
-                </tr>
-                <tr>
-                    <th>Balanced Accuracy</th>
-                    <td>{{ metric.balanced_accuracy }}</td>
-                </tr>
-            </table>
-            <img src="{% static metric.confusion_matrix %}" alt="Confusion Matrix"
-                style="max-width: 800px; height: auto;">
-            {% endfor %}
-        </div>
+        </tbody>
+    </table>
+    <h3>Confusion Matrices</h3>
+    <div class="confusion-matrices">
+
+        <img src="{% static metric1.confusion_matrix %}" alt="Confusion Matrix" style="max-width: 800px; height: auto;">
+
+        <img src="{% static metric2.confusion_matrix %}" alt="Confusion Matrix" style="max-width: 800px; height: auto;">
+
     </div>
-</div>
-{% endblock %}
+    {% endfor %}
+    {% endblock %}

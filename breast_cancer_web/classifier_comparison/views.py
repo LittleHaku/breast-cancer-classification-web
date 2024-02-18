@@ -23,14 +23,15 @@ def compare_classifiers(request):
         metrics1 = Metric.objects.filter(classifier=classifier1)
         metrics2 = Metric.objects.filter(classifier=classifier2)
 
+        # Pair up the metrics for the two classifiers
+        metrics = zip(metrics1, metrics2)
+
         context = {
             'classifier1': classifier1,
             'classifier2': classifier2,
-            'metrics1': metrics1,
-            'metrics2': metrics2,
+            'metrics': metrics,
         }
 
-        # Return a response with the comparison results
         return render(request, 'classifier_comparison_results.html', context)
 
     else:
