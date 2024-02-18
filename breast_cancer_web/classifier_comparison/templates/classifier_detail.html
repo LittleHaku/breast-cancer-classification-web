@@ -50,17 +50,36 @@
   </details>
   <h3>Feature Importance</h3>
   <details>
-    <summary>Click here to see plots</summary>
+    <summary>Click here to see global features importance</summary>
+    <p>In both plots the features are ranked by importance, with the most important feature at the top.</p>
+    <p>The second one, the beeswarm plot, shows the distribution of feature importance for each feature, each dot
+      represents a sample, the color represents if the value was high or low, and then if it is to the left or right of
+      the mean indicates how important that feature was for the decision, the more to the right the more malignant the
+      sample was, and the more to the left the more benign it was.</p>
     <div class="plots">
       <div>
+        <h4>Bar Plot</h4>
         <img src="{% static metric.global_features_plot %}" alt="Global Features Plot"
           style="max-width: 800px; height: auto;">
       </div>
       <div>
+        <h4>Beeswarm Plot</h4>
         <img src="{% static metric.beeswarm_plot %}" alt="Beeswarm Plot" style="max-width: 800px; height: auto;">
       </div>
     </div>
 </div>
+</details>
+{% endfor %}
+
+<h3>Single Feature Analysis</h3>
+{% for feature in features %}
+<details>
+  <summary>Click here to see {{ feature.name }}</summary>
+  <div class="feature">
+    <img src="{% static feature.mean_path %}" alt="Mean Plot" style="max-width: 500px; height: auto;">
+    <img src="{% static feature.error_path %}" alt="Error Plot" style="max-width: 500px; height: auto;">
+    <img src="{% static feature.worst_path %}" alt="Worst Plot" style="max-width: 500px; height: auto;">
+  </div>
 </details>
 {% endfor %}
 

@@ -1,10 +1,9 @@
-from .models import Classifier, Metric
 from django.shortcuts import render, get_object_or_404
 import ast
 import json
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render
-from .models import Classifier
+from .models import Classifier, Feature, Metric
 
 
 def home(request):
@@ -56,5 +55,10 @@ def classifier_detail(request, pk):
     classifier.hyperparameters = json.loads(classifier.hyperparameters)
     # Get the metrics associated with the classifier
     metrics = Metric.objects.filter(classifier=classifier)
+    # Get the features associated with the classifier
+    features = Feature.objects.filter(metric__classifier=classifier)
+    # print the features
+    for feature in features:
+        print(feature.name)
+    return render(request, 'classifier_detail.html', {'classifier': classifier, 'metrics': metrics, 'features': features})
 
-    return render(request, 'classifier_detail.html', {'classifier': classifier, 'metrics': metrics})

@@ -1,6 +1,6 @@
 import json
 from django.core.management.base import BaseCommand
-from classifier_comparison.models import Classifier, Metric
+from classifier_comparison.models import Classifier, Metric, Feature
 from django.core.files import File
 
 
@@ -15,6 +15,10 @@ class Command(BaseCommand):
         # Load metrics from JSON file
         with open('metrics.json', 'r') as f:
             metrics = json.load(f)
+
+        categories = ["radius", "texture", "perimeter", "area", "smoothness",
+                      "compactness", "concavity", "concave_points", "symmetry", "fractal_dimension"]
+        variants = ["mean", "error", "worst"]
 
         # Create Classifier objects and save them to the database
         for classifier_data in classifiers:
@@ -39,7 +43,7 @@ class Command(BaseCommand):
                     global_features_plot_filename = f'shap_plots/global/bar_{classifier_name_no_spaces}.png'
                     beeswarm_plot_filename = f'shap_plots/global/beeswarm_{classifier_name_no_spaces}.png'
 
-                    Metric.objects.create(
+                    metric = Metric.objects.create(
                         classifier=classifier,
                         f1_score=format(metric_data['f1_score'], '.4f'),
                         recall=format(metric_data['recall'], '.4f'),
@@ -51,6 +55,23 @@ class Command(BaseCommand):
                         global_features_plot=global_features_plot_filename,
                         beeswarm_plot=beeswarm_plot_filename
                     )
+
+                    for category in categories:
+                        feature_name = category
+                        paths = {}
+                        for variant in variants:
+                            path = f'shap_plots/single_features/{classifier_name_no_spaces}_{category}_{variant}.png'
+                            paths[variant] = path
+                        feature = Feature.objects.create(
+                            name=feature_name,
+                            worst_path=paths['worst'],
+                            error_path=paths['error'],
+                            mean_path=paths['mean']
+                        )
+                        feature.save()
+                        metric.features.add(feature)
+
+                    metric.save()
 
         self.stdout.write(self.style.SUCCESS(
             'Successfully populated the database with initial data'))
