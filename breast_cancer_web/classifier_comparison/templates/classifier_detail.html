@@ -7,52 +7,61 @@
 {% block content %}
 <div class="classifier">
   <h2>{{ classifier.name }}</h2>
+  <p><strong>Ensemble:</strong> {{ classifier.ensemble|yesno:"Yes,No" }}</p>
   <p>{{ classifier.short_description }}</p>
   <h3>Hyperparameters</h3>
   <div class="hyperparameters">
-    {% for key, value in classifier.hyperparameters.items %}
-    <div class="hyperparameter">
-      <strong>{{ key }}:</strong>
-      {% if key == "estimators" %}
-      {% for estimator in value %}
-      {% for name, params in estimator.items %}
-      <div class="estimator">
-        <h4>{{ name }}</h4>
-        {% for param_key, param_value in params.items %}
-        <div class="param">
-          <strong>{{ param_key }}:</strong> {{ param_value }}
+    <details>
+      <summary>Click here to see hyperparameters</summary>
+      {% for key, value in classifier.hyperparameters.items %}
+      <div class="hyperparameter">
+        <strong>{{ key }}:</strong>
+        {% if key == "estimators" %}
+        {% for estimator in value %}
+        {% for name, params in estimator.items %}
+        <div class="estimator">
+          <h4>{{ name }}</h4>
+          {% for param_key, param_value in params.items %}
+          <div class="param">
+            <strong>{{ param_key }}:</strong> {{ param_value }}
+          </div>
+          {% endfor %}
         </div>
         {% endfor %}
+        {% endfor %}
+        {% else %}
+        {{ value }}
+        {% endif %}
       </div>
       {% endfor %}
-      {% endfor %}
-      {% else %}
-      {{ value }}
-      {% endif %}
-    </div>
-    {% endfor %}
+    </details>
   </div>
-  <h3>Ensemble</h3>
-  <p>{{ classifier.ensemble|yesno:"Yes,No" }}</p>
   <h3>Metrics</h3>
-  {% for metric in metrics %}
-  <div class="metric">
-    <strong>F1 Score:</strong> {{ metric.f1_score }}<br>
-    <strong>Recall:</strong> {{ metric.recall }}<br>
-    <strong>F2 Score:</strong> {{ metric.f2_score }}<br>
-    <strong>Balanced Accuracy:</strong> {{ metric.balanced_accuracy }}<br>
-    <img src="{% static metric.confusion_matrix %}" alt="Confusion Matrix" style="max-width: 800px; height: auto;">
-  </div>
-  <h3>Plots</h3>
-  <div class="plots">
-    <div>
-      <img src="{% static metric.global_features_plot %}" alt="Global Features Plot" style="max-width: 800px; height: auto;">
+  <details>
+    <summary>Click here to see metrics and confusion matrix</summary>
+    {% for metric in metrics %}
+    <div class="metric">
+      <strong>F1 Score:</strong> {{ metric.f1_score }}<br>
+      <strong>Recall:</strong> {{ metric.recall }}<br>
+      <strong>F2 Score:</strong> {{ metric.f2_score }}<br>
+      <strong>Balanced Accuracy:</strong> {{ metric.balanced_accuracy }}<br>
+      <img src="{% static metric.confusion_matrix %}" alt="Confusion Matrix" style="max-width: 800px; height: auto;">
     </div>
-    <div>
-      <img src="{% static metric.beeswarm_plot %}" alt="Beeswarm Plot" style="max-width: 800px; height: auto;">
+  </details>
+  <h3>Feature Importance</h3>
+  <details>
+    <summary>Click here to see plots</summary>
+    <div class="plots">
+      <div>
+        <img src="{% static metric.global_features_plot %}" alt="Global Features Plot"
+          style="max-width: 800px; height: auto;">
+      </div>
+      <div>
+        <img src="{% static metric.beeswarm_plot %}" alt="Beeswarm Plot" style="max-width: 800px; height: auto;">
+      </div>
     </div>
-  </div>
-  </div>
+</div>
+</details>
 {% endfor %}
 
 {% endblock %}
