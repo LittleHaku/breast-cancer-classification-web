@@ -20,10 +20,18 @@ def compare_classifiers(request):
         classifier1 = Classifier.objects.get(id=classifier1_id)
         classifier2 = Classifier.objects.get(id=classifier2_id)
 
-        print("Selected classifiers:", classifier1.name, classifier2.name)
+        metrics1 = Metric.objects.filter(classifier=classifier1)
+        metrics2 = Metric.objects.filter(classifier=classifier2)
+
+        context = {
+            'classifier1': classifier1,
+            'classifier2': classifier2,
+            'metrics1': metrics1,
+            'metrics2': metrics2,
+        }
 
         # Return a response with the comparison results
-        return HttpResponse("Comparison results will be displayed here.")
+        return render(request, 'classifier_comparison_results.html', context)
 
     else:
         # Fetch all classifiers from the database
@@ -39,16 +47,6 @@ def classifier_list(request):
     base_classifiers = classifiers.filter(ensemble=False)
 
     return render(request, 'classifier_list.html', {'ensemble_classifiers': ensemble_classifiers, 'base_classifiers': base_classifiers})
-
-
-""" def classifier_detail(request, pk):
-    classifier = get_object_or_404(Classifier, pk=pk)
-    # Convert the string representation of hyperparameters into a dictionary
-    classifier.hyperparameters = ast.literal_eval(classifier.hyperparameters)
-    # Fetch associated metrics for the classifier
-    metrics = Metric.objects.filter(classifier=classifier)
-    return render(request, 'classifier_detail.html', {'classifier': classifier, 'metrics': metrics})
- """
 
 
 def classifier_detail(request, pk):

@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Classifier Comparison{% endblock %}
+
+{% block content %}
+<div class="comparison">
+    <h2>Comparison: {{ classifier1.name }} vs {{ classifier2.name }}</h2>
+
+    <div class="classifiers" style="display: flex; justify-content: space-between;">
+        <div class="classifier" id="classifier1" style="flex: 1; margin-right: 10px;">
+            <h3>{{ classifier1.name }}</h3>
+            <!-- Include the details for classifier1 here, similar to your detail view -->
+            {% for metric in metrics1 %}
+            <table>
+                <tr>
+                    <th>F1 Score</th>
+                    <td>{{ metric.f1_score }}</td>
+                </tr>
+                <tr>
+                    <th>Recall</th>
+                    <td>{{ metric.recall }}</td>
+                </tr>
+                <tr>
+                    <th>F2 Score</th>
+                    <td>{{ metric.f2_score }}</td>
+                </tr>
+                <tr>
+                    <th>Balanced Accuracy</th>
+                    <td>{{ metric.balanced_accuracy }}</td>
+                </tr>
+            </table>
+            <img src="{% static metric.confusion_matrix %}" alt="Confusion Matrix"
+                style="max-width: 800px; height: auto;">
+            {% endfor %}
+        </div>
+
+        <div class="classifier" id="classifier2" style="flex: 1; margin-left: 10px;">
+            <h3>{{ classifier2.name }}</h3>
+            {% for metric in metrics2 %}
+            <table>
+                <tr>
+                    <th>F1 Score</th>
+                    <td>{{ metric.f1_score }}</td>
+                </tr>
+                <tr>
+                    <th>Recall</th>
+                    <td>{{ metric.recall }}</td>
+                </tr>
+                <tr>
+                    <th>F2 Score</th>
+                    <td>{{ metric.f2_score }}</td>
+                </tr>
+                <tr>
+                    <th>Balanced Accuracy</th>
+                    <td>{{ metric.balanced_accuracy }}</td>
+                </tr>
+            </table>
+            <img src="{% static metric.confusion_matrix %}" alt="Confusion Matrix"
+                style="max-width: 800px; height: auto;">
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
