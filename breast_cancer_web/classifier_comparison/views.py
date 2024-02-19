@@ -25,10 +25,16 @@ def compare_classifiers(request):
         # Pair up the metrics for the two classifiers
         metrics = zip(metrics1, metrics2)
 
+        # Pair up features too
+        features1 = Feature.objects.filter(metric__classifier=classifier1)
+        features2 = Feature.objects.filter(metric__classifier=classifier2)
+        features = zip(features1, features2)
+
         context = {
             'classifier1': classifier1,
             'classifier2': classifier2,
             'metrics': metrics,
+            'features': features
         }
 
         return render(request, 'classifier_comparison_results.html', context)
@@ -58,7 +64,6 @@ def classifier_detail(request, pk):
     # Get the features associated with the classifier
     features = Feature.objects.filter(metric__classifier=classifier)
     # print the features
-    for feature in features:
-        print(feature.name)
+    """ for feature in features:
+        print(feature.name) """
     return render(request, 'classifier_detail.html', {'classifier': classifier, 'metrics': metrics, 'features': features})
-

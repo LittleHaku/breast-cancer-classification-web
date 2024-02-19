@@ -50,5 +50,89 @@
         <img src="{% static metric2.confusion_matrix %}" alt="Confusion Matrix" style="max-width: 800px; height: auto;">
 
     </div>
+
+    <h3>Feature Importance</h3>
+
+    <details>
+        <summary>Click here to see global features importance</summary>
+        <div class="plots">
+            <table>
+                <tr>
+                    <th colspan="2">
+                        <h3>Bar Plot</h3>
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        <h4>{{ classifier1.name }}</h4>
+                        <img src="{% static metric1.global_features_plot %}" alt="Global Features Plot"
+                            style="max-width: 500px; height: auto;">
+                    </td>
+                    <td>
+                        <h4>{{ classifier2.name }}</h4>
+                        <img src="{% static metric2.global_features_plot %}" alt="Global Features Plot"
+                            style="max-width: 500px; height: auto;">
+                    </td>
+                </tr>
+                <tr>
+                    <th colspan="2">
+                        <h3>Beeswarm Plot</h3>
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        <h4>{{ classifier1.name }}</h4>
+                        <img src="{% static metric1.beeswarm_plot %}" alt="Beeswarm Plot"
+                            style="max-width: 500px; height: auto;">
+                    </td>
+                    <td>
+                        <h4>{{ classifier2.name }}</h4>
+                        <img src="{% static metric2.beeswarm_plot %}" alt="Beeswarm Plot"
+                            style="max-width: 500px; height: auto;">
+                    </td>
+                </tr>
+            </table>
+
+    </details>
+</div>
+{% endfor %}
+
+<div>
+    <h3>Single Feature Comparison</h3>
+
+    {% for feature1, feature2 in features %}
+    <details>
+        <summary>Click here to see {{ feature1.name }}</summary>
+        <table>
+            <tr>
+                <td>
+                    <div class="feature">
+                        <h4>{{ classifier1.name }}</h4>
+                        <img src="{% static feature1.mean_path %}" alt="Mean Plot"
+                            style="max-width: 500px; height: auto;">
+                        <img src="{% static feature1.error_path %}" alt="Error Plot"
+                            style="max-width: 500px; height: auto;">
+                        <img src="{% static feature1.worst_path %}" alt="Worst Plot"
+                            style="max-width: 500px; height: auto;">
+                    </div>
+
+                </td>
+                <td>
+                    <div class="feature">
+                        <h4>{{ classifier2.name }}</h4>
+                        <img src="{% static feature2.mean_path %}" alt="Mean Plot"
+                            style="max-width: 500px; height: auto;">
+                        <img src="{% static feature2.error_path %}" alt="Error Plot"
+                            style="max-width: 500px; height: auto;">
+                        <img src="{% static feature2.worst_path %}" alt="Worst Plot"
+                            style="max-width: 500px; height: auto;">
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </details>
     {% endfor %}
-    {% endblock %}
+
+
+</div>
+{% endblock %}
