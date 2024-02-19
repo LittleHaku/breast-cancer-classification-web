@@ -4,33 +4,42 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Breast Cancer Classifier{% endblock %}</title>
 
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="preconnect" href="https://rsms.me/">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
 </head>
+
 <body>
-    <header>
-        <h1>Breast Cancer Classifier</h1>
-        <nav>
-            <ul>
-                <li><a href="{% url 'home' %}">Home</a></li>
-                <li><a href="{% url 'compare_classifiers' %}">Compare Classifiers</a></li>
-                <li><a href="{% url 'classifier_list' %}">Classifier List</a></li>
-            </ul>
-        </nav>
-    </header>
-    
+    <div class="header-container">
+        <header>
+            <nav>
+                <h2 class="logo">Breast Cancer Classifiers</h2>
+                <ul>
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="{% url 'compare_classifiers' %}">Compare Classifiers</a></li>
+                    <li><a href="{% url 'classifier_list' %}">Classifier List</a></li>
+                </ul>
+            </nav>
+        </header>
+    </div>
+
     <main>
         {% block content %}
         {% endblock %}
     </main>
-
+    
     <footer>
         <p>IMPORTANT: These values have been obtained using the Test Set (30%), see the home page for more info.</p>
         <p>&copy; {% now "Y" %} Iván Sotillo del Horno</p>
     </footer>
+
+
 </body>
+
 </html>

@@ -1,0 +1,71 @@
+:root {
+    font-family: Inter, sans-serif;
+    font-feature-settings: 'liga' 1, 'calt' 1;
+    /* fix for Chrome */
+
+    --black: #030303;
+    --accent-pink: #fc0c75;
+    --white: #ffffff;
+    --light-pink: #fcd6e6;
+    --light-grey: #c1c1c1;
+    --dark-grey: #272b30;
+    --dark-shadow: rgba(0, 0, 0, 0.2);
+}
+
+@supports (font-variation-settings: normal) {
+    :root {
+        font-family: InterVariable, sans-serif;
+    }
+}
+
+.logo {
+    color: var(--accent-pink);
+    font-size: 25px;
+    letter-spacing: 1px;
+}
+
+.header-container {
+    height: 100svh;
+    width: 100%;
+    background: var(--white);
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+nav ul li {
+    list-style: none;
+    display: inline-block;
+    padding: 0px 25px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--black);
+    font-size: 15px;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    color: var(--accent-pink);
+    transition: 0.3s
+}
+
+header {
+    position: absolute;
+    width: 94%;
+    margin: 0 auto;
+    padding: 5px 0;
+    top: 40px;
+    right: 30px;
+    left: 30px;
+    border-radius: 50px;
+    z-index: 2;
+    background: var(--white);
+    box-shadow: 0 0 30px var(--dark-shadow);
+}
