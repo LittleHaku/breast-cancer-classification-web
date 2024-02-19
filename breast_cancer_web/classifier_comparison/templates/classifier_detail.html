@@ -10,6 +10,8 @@
   <p><strong>Ensemble:</strong> {{ classifier.ensemble|yesno:"Yes,No" }}</p>
   <p>{{ classifier.short_description }}</p>
   <h3>Hyperparameters</h3>
+  <p>Hyperparameters are the parameters that are not learned by the model, they are set before the training process, to
+    optimize the model, you can change these parameters to see how the model behaves.</p>
   <div class="hyperparameters">
     <details>
       <summary>Click here to see hyperparameters</summary>
@@ -37,6 +39,8 @@
     </details>
   </div>
   <h3>Metrics</h3>
+  <p>Metrics let us see how well the model is performing, the confusion matrix shows us how many samples were classified
+    correctly and how many were classified incorrectly.</p>
   <details>
     <summary>Click here to see metrics and confusion matrix</summary>
     {% for metric in metrics %}
@@ -72,6 +76,7 @@
 {% endfor %}
 
 <h3>Single Feature Analysis</h3>
+<p>In these plots we can see in more detail how each of the features affects the result, each dot is again a sample, with dots to the right being higher values of that feature, and dots to the left being lower values of that feature, the Y axis is the predicted probability of the sample being malignant, the more to the top the more malignant the sample was, and the more to the bottom the more benign it was. The red line helps us see the trend of the feature, if the line is going up, it means that the feature is positively correlated with the result, that is, the higher the value, the more likely the sample is to be malignant, and if the line is going down, it means that the feature is negatively correlated with the result. Lastly the color of the dots are related to another feature which is selected by the SHAP library, the more pink the higher that feature, the more blue the lower that feature.</p>
 {% for feature in features %}
 <details>
   <summary>Click here to see {{ feature.name }}</summary>
