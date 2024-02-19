@@ -8,6 +8,14 @@ class Classifier(models.Model):
     short_description = models.TextField()
     hyperparameters = models.TextField()
     ensemble = models.BooleanField(default=False)
+    malignant_instances = ManyToManyField(
+        'Instance', related_name='malignant_metrics')
+    benign_instances = ManyToManyField(
+        'Instance', related_name='benign_metrics')
+    missclassified_instances = ManyToManyField(
+        'Instance', related_name='missclassified_metrics')
+    closest_instances = ManyToManyField(
+        'Instance', related_name='closest_metrics')
 
 
 class Metric(models.Model):
@@ -27,3 +35,9 @@ class Feature(models.Model):
     worst_path = models.CharField(max_length=255)
     error_path = models.CharField(max_length=255)
     mean_path = models.CharField(max_length=255)
+
+
+class Instance(models.Model):
+    name = models.CharField(max_length=100)
+    idx = models.IntegerField()
+    path = models.CharField(max_length=255)

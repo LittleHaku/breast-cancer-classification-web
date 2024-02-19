@@ -24,3 +24,10 @@ populate:
 
 clear_db:
 	@$(MANAGE) flush
+
+clear_migration:
+	@rm -rf */migrations
+	@rm db.sqlite3
+	@$(MANAGE) makemigrations
+	@$(MANAGE) migrate
+	@$(MANAGE) populate

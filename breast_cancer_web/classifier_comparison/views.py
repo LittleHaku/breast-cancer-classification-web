@@ -3,7 +3,7 @@ import ast
 import json
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render
-from .models import Classifier, Feature, Metric
+from .models import Classifier, Feature, Metric, Instance
 
 
 def home(request):
@@ -63,7 +63,24 @@ def classifier_detail(request, pk):
     metrics = Metric.objects.filter(classifier=classifier)
     # Get the features associated with the classifier
     features = Feature.objects.filter(metric__classifier=classifier)
-    # print the features
-    """ for feature in features:
-        print(feature.name) """
-    return render(request, 'classifier_detail.html', {'classifier': classifier, 'metrics': metrics, 'features': features})
+
+    # Get benign, malignant, missclassified and closest_to_boundary instances for the classifier
+    benign_instances = classifier.benign_instances.all()
+    malignant_instances = classifier.malignant_instances.all()
+    missclassified_instances = classifier.missclassified_instances.all()
+    closest_instances = classifier.closest_instances.all()
+
+    context = {
+        'classifier': classifier,
+        'metrics': metrics,
+        'features': features,
+        'benign_instances': benign_instances,
+        'malignant_instances': malignant_instances,
+        'missclassified_instances': missclassified_instances,
+        'closest_instances': closest_instances
+    }
+
+    for inst in malignant_instances:
+        print(inst)
+
+    return render(request, 'classifier_detail.html', context)

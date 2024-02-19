@@ -1,7 +1,8 @@
 import json
 from django.core.management.base import BaseCommand
-from classifier_comparison.models import Classifier, Metric, Feature
+from classifier_comparison.models import Classifier, Metric, Feature, Instance
 from django.core.files import File
+import os
 
 
 class Command(BaseCommand):
@@ -30,6 +31,36 @@ class Command(BaseCommand):
                 # hyperparameters=json.dumps(classifier_data['hyperparameters']),
                 ensemble=classifier_data['ensemble']
             )
+
+            classifier_name_no_spaces = classifier.name.replace(' ', '_')
+
+            base_path = f'static/shap_plots/local_analysis/{classifier_name_no_spaces}'
+
+            types = ['benign', 'malignant',
+                     'missclassified', 'closest_to_boundary']
+
+            for t in types:
+                path = f'{base_path}/{t}'
+                imgs = [i for i in os.listdir(path)]
+                for img in imgs:
+                    img_path = f'{path}/{img}'
+                    img_path_no_static = img_path.split('static/')[1]
+                    # get the index of the image between _ and .png
+                    img_num = int(img.split('_')[1].split('.')[0])
+                    instance = Instance.objects.create(
+                        name=img,
+                        idx=img_num,
+                        path=img_path_no_static
+                    )
+                    instance.save()
+                    if t == 'benign':
+                        classifier.benign_instances.add(instance)
+                    elif t == 'malignant':
+                        classifier.malignant_instances.add(instance)
+                    elif t == 'missclassified':
+                        classifier.missclassified_instances.add(instance)
+                    elif t == 'closest_to_boundary':
+                        classifier.closest_instances.add(instance)
 
             classifier.save()
 
@@ -71,6 +102,7 @@ class Command(BaseCommand):
                         feature.save()
                         metric.features.add(feature)
 
+                    # print(f'benign instances: {img_num}')
                     metric.save()
 
         self.stdout.write(self.style.SUCCESS(

@@ -72,8 +72,8 @@
       </div>
     </div>
 </div>
-</details>
 {% endfor %}
+</details>
 
 <h3>Single Feature Analysis</h3>
 <p>In these plots we can see in more detail how each of the features affects the result, each dot is again a sample,
@@ -94,5 +94,62 @@
   </div>
 </details>
 {% endfor %}
+
+<div>
+  <h3>Classification Examples/Instances</h3>
+  <p>In this section we can see how the classifier made some of its decisions, these are split into benign and
+    malignant,
+    which are instances were the classifier was the most confident about its decision, closest to the decision boundary,
+    which are instances were the classifier was the least confident about its decision, and misclassified, which are
+    instances that were classified incorrectly.</p>
+  <p>These plots are called waterfall plots, the f(x) means the predicted probability of the sample being malignant. The
+    features are sorted by importance, with the most important feature at the top, and the least important feature at
+    the
+    bottom. The red arrow to the right means that the feature contributed to a malignant decision, and the blue arrow to
+    the left means that the feature contributed to a benign decision, also the higher the value in the arrow, the more
+    the
+    feature contributed to the decision.</p>
+
+  <h4>Benign</h4>
+  <details>
+    <summary>Click here to see benign examples</summary>
+    {% for instance in benign_instances %}
+    <div class="instance">
+      <img src="{% static instance.path %}" alt="Instance" style="max-width: 800px; height: auto;">
+    </div>
+    {% endfor %}
+  </details>
+
+  <h4>Malignant</h4></p>
+  <details>
+    <summary>Click here to see malignant examples</summary>
+    {% for instance in malignant_instances %}
+\
+    <div class="instance">
+      <img src="{% static instance.path %}" alt="Instance" style="max-width: 800px; height: auto;">
+    </div>
+    {% endfor %}
+  </details>
+
+  <h4>Closest to the Decision Boundary</h4>
+  <details>
+    <summary>Click here to see instances closest to the decision boundary</summary>
+    {% for instance in closest_instances %}
+    <div class="instance">
+      <img src="{% static instance.path %}" alt="Instance" style="max-width: 800px; height: auto;">
+    </div>
+    {% endfor %}
+  </details>
+
+  <h4>Misclassified</h4>
+  <details>
+    <summary>Click here to see misclassified examples</summary>
+    {% for instance in missclassified_instances %}
+    <div class="instance">
+      <img src="{% static instance.path %}" alt="Instance" style="max-width: 800px; height: auto;">
+    </div>
+    {% endfor %}
+  </details>
+</div>
 
 {% endblock %}
