@@ -214,3 +214,11 @@ header {
 .btn1:hover {
     box-shadow: 0 0 30px var(--accent-pink);
 }
+
+.footer-container {
+    position: relative;
+    background: var(--black);
+    color: var(--white);
+    padding: 30px 0;
+    text-align: center;
+}
