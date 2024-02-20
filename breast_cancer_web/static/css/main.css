@@ -10,6 +10,11 @@
     --light-grey: #c1c1c1;
     --dark-grey: #272b30;
     --dark-shadow: rgba(0, 0, 0, 0.2);
+    --timberwolf: #DBD7D8ff;
+    --pink-lavender: #E2B7D3ff;
+    --plum-web: #ED8FD9ff;
+    --plum-web-2: #F784D5;
+    --thistle: #E3CCDFff;
 }
 
 @supports (font-variation-settings: normal) {
@@ -60,7 +65,7 @@ button:hover {
 }
 
 .logo {
-    color: var(--black);
+    color: var(--light-pink);
     font-size: 30px;
     letter-spacing: 1px;
     text-decoration: none;
@@ -68,7 +73,7 @@ button:hover {
 }
 
 .logo a {
-    color: var(--black);
+    color: var(--plum-web-2);
     text-decoration: none;
 }
 
@@ -198,17 +203,6 @@ header {
     display: inline-block;
     box-sizing: border-box;
     outline: none;
-}
-
-.select::after {
-    content: '\25BC';
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding: 1em;
-    background-color: #34495e;
-    transition: .25s all ease;
-    pointer-events: none;
 }
 
 .btn1 {
