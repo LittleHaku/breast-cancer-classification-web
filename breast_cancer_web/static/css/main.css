@@ -115,7 +115,7 @@ nav ul li a:hover {
 }
 
 header {
-    position: absolute;
+    position: relative;
     width: 94%;
     margin: 0 auto;
     padding: 13px 0;
@@ -162,10 +162,11 @@ header {
 }
 
 .content {
-    position: absolute;
-    top: 40%;
-    left: 20%;
-    transform: translateY(-50%);
+    position: relative;
+    margin-top: 100px;
+    margin-bottom: 20px;
+    margin-left: 5%;
+
 }
 
 .content h1 {
