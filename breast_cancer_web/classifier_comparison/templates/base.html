@@ -19,7 +19,7 @@
     <div class="header-container">
         <header>
             <nav>
-                <h2 class="logo">Breast Cancer Classifiers</h2>
+                <h2 class="logo"><a href="{% url 'home' %}">Breast Cancer Classifiers</a></h2>
                 <ul>
                     <li><a href="{% url 'home' %}">Home</a></li>
                     <li><a href="{% url 'compare_classifiers' %}">Compare Classifiers</a></li>
@@ -29,11 +29,10 @@
         </header>
     </div>
 
-    <main>
-        {% block content %}
-        {% endblock %}
-    </main>
-    
+    {% block content %}
+    {% endblock %}
+
+
     <footer>
         <p>IMPORTANT: These values have been obtained using the Test Set (30%), see the home page for more info.</p>
         <p>&copy; {% now "Y" %} Iván Sotillo del Horno</p>

@@ -1,9 +1,48 @@
-<main>
-    {% block content %}
-    {% endblock %}
-</main>
 
-<footer>
-    <p>IMPORTANT: These values have been obtained using the Test Set (30%), see the home page for more info.</p>
-    <p>&copy; {% now "Y" %} Iván Sotillo del Horno</p>
-</footer>
+<p>
+    IMPORTANT:
+</p>
+
+<p>
+    The values that are used on this web have been obtained predicting the test set (30%), so if they differ at some
+    point from the ones in the thesis it is because, there, cross validation using just the training set was used
+    until
+    the end was reached to avoid data leakage. All the metrics obtained here were calculated after all the
+    classifiers
+    had been optimized and the best ones were chosen.
+</p>
+
+<h3>Features of the Breast Cancer Classifier Website</h3>
+<p>
+    - Compare Classifiers: On the "Compare Classifiers" page, you can select two classifiers from a dropdown menu
+    and
+    compare their metrics, confusion matrix, and feature importance.
+</p>
+<p>
+    - Classifier List: On the "Classifier List" page, you can see all the classifiers available. Click on any
+    classifier
+    to view its metrics, confusion matrix, and feature importance.
+</p>
+
+<h3>About the Thesis</h3>
+<p>
+    This thesis presents a comparative analysis of base and ensemble classifiers for breast cancer detection and the
+    use
+    of eXplainable AI (XAI) to interpret the results. The initial phase involves constructing and optimizing the
+    classifier models, these classifiers will analyze the results from fine needle biopsy aspirations and classify
+    the
+    samples as benign or malignant.
+</p>
+<p>
+    Following this, a performance comparison is conducted comparing metrics such as the F1 score or the recall. The
+    aim
+    is to identify the best classifier regarding our metrics. Once the best classifier model is found, we dive
+    deeper
+    into it to understand how it works. For this, we will use SHAP (SHapley Additive exPlanations), a method of XAI
+    (eXplainable AI) that allows us to see the importance of each feature, and how they contribute to the final
+    decision
+    of the model. This will allow us to not only classify the samples but also to understand why the model has made
+    that
+    decision which can be a step forward in understanding AI models for medical purposes.
+</p>
+</div>
