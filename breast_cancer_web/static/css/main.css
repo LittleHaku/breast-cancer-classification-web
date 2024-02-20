@@ -29,6 +29,36 @@ body {
     position: relative;
 }
 
+select {
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    background-color: var(--light-pink);
+    cursor: pointer;
+
+}
+
+button {
+    background-color: var(--black);
+    color: var(--white);
+    padding: 10px 20px;
+    text-decoration: none;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 14px;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: var(--accent-pink);
+    transition: 0.3s;
+}
+
 .logo {
     color: var(--black);
     font-size: 30px;
@@ -90,7 +120,7 @@ header {
     border-radius: 50px;
     z-index: 2;
     background: var(--white);
-    box-shadow: 0 0 30px var(--dark-shadow);
+    box-shadow: 0 0 30px var(--light-grey);
 }
 
 .bg {
@@ -105,23 +135,88 @@ header {
     overflow: hidden;
 }
 
-.content {
+.right-content {
     position: absolute;
-    top:50%;
-    left:42%;
+    top: 50%;
+    left: 42%;
     transform: translateY(-50%);
 }
 
-.content h1 {
+.right-content h1 {
     font-size: 150px;
     color: var(--black);
     line-height: 180px;
     margin-bottom: 10px;
 }
 
-.content h4 {
+.right-content h4 {
     font-size: 25px;
     color: var(--black);
     letter-spacing: 1px;
     margin-bottom: 40px;
+}
+
+.content {
+    position: absolute;
+    top: 40%;
+    left: 20%;
+    transform: translateY(-50%);
+}
+
+.content h1 {
+    font-size: 100px;
+    color: var(--black);
+    line-height: 180px;
+    margin-bottom: 10px;
+}
+
+.content h4 {
+    font-size: 18px;
+    font-weight: normal;
+    color: var(--black);
+    margin-bottom: 40px;
+}
+
+.dropdowns {
+    margin-bottom: 30px;
+    margin-left: 200px;
+    pointer-events: auto;
+}
+
+.dropdowns label {
+    width: 15%;
+    display: inline-block;
+    box-sizing: border-box;
+    text-align: right;
+    margin-right: 20px;
+}
+
+.dropdowns select {
+    margin-top: 10px;
+    text-align: center;
+    width: 30%;
+    display: inline-block;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.select::after {
+    content: '\25BC';
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 1em;
+    background-color: #34495e;
+    transition: .25s all ease;
+    pointer-events: none;
+}
+
+.btn1 {
+    margin-top: 30px;
+    margin-left: 200px;
+    box-shadow: 0 0 30px var(--light-pink);
+}
+
+.btn1:hover {
+    box-shadow: 0 0 30px var(--accent-pink);
 }

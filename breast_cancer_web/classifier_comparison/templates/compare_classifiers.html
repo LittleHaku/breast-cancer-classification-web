@@ -5,27 +5,37 @@
 {% block title %}Compare Classifiers - Breast Cancer Classifier{% endblock %}
 
 {% block content %}
-<h2>Compare Classifiers</h2>
 
-<p>Select two classifiers from the dropdown menus below to compare their metrics, confusion matrix, and feature importance:</p>
+<div class="bg">
+</div>
 
-<form action="{% url 'compare_classifiers' %}" method="post">
-    {% csrf_token %}
-    <label for="classifier1">Classifier 1:</label>
-    <select name="classifier1" id="classifier1">
-        {% for classifier in classifiers %}
-            <option value="{{ classifier.id }}">{{ classifier.name }}</option>
-        {% endfor %}
-    </select>
-    <br>
-    <label for="classifier2">Classifier 2:</label>
-    <select name="classifier2" id="classifier2">
-        {% for classifier in classifiers %}
-            <option value="{{ classifier.id }}">{{ classifier.name }}</option>
-        {% endfor %}
-    </select>
-    <br>
-    <button type="submit">Compare</button>
-</form>
 
+<div class="right-content">
+    <h1>Compare Classifiers</h1>
+
+    <h4>Select two classifiers from the dropdown menus below to compare their metrics, confusion matrix, and feature
+        importance:</h4>
+
+    <form action="{% url 'compare_classifiers' %}" method="post">
+        <div class="dropdowns">
+            {% csrf_token %}
+            <label for="classifier1">Classifier 1:</label>
+            <select name="classifier1" id="classifier1">
+                {% for classifier in classifiers %}
+                <option value="{{ classifier.id }}">{{ classifier.name }}</option>
+
+                {% endfor %}
+            </select>
+            <br>
+            <label for="classifier2">Classifier 2:</label>
+            <select name="classifier2" id="classifier2">
+                {% for classifier in classifiers %}
+                <option value="{{ classifier.id }}">{{ classifier.name }}</option>
+                {% endfor %}
+            </select>
+            <br>
+            <button type="submit" class="btn1">Compare</button>
+        </div>
+    </form>
+</div>
 {% endblock %}
