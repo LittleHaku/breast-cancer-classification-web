@@ -415,10 +415,39 @@ header {
     }
 }
 
+.details {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.details__summary {
+    cursor: pointer;
+    padding: 10px;
+    background-color: var(--light-pink);
+    border-radius: 10px;
+    margin-left: 500px;
+    margin-right: 500px;
+    margin-bottom: 20px;
+    text-align: center;
+    list-style: none;
+}
+
+.details__summary:before {
+    content: '▶';
+    padding-right: 5px;
+    transition: transform 0.2s linear;
+}
+
+.details__summary:hover {
+    background-color: var(--accent-pink);
+    transition: 0.3s;
+}
+
 .details__content {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease-out;
+    text-align: center;
 }
 
 .details__content table {
@@ -427,5 +456,4 @@ header {
     margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
-
 }
