@@ -510,3 +510,44 @@ header {
     display: flex;
     justify-content: center;
 }
+
+.classifiers {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.classifier {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 2px 5px var(--pink-lavender);
+}
+
+.classifier h4 {
+    margin: 10px 0;
+    color: var(--dark-grey);
+}
+
+
+.classifier h4 hover {
+    color: var(--dark-grey);
+    text-shadow: none;
+    transition: 0.3s;
+
+}
+
+.classifier:hover {
+    box-shadow: 0 0 50px var(--accent-pink);
+    scale: 1.01;
+    transition: 0.3s;
+}
+
+.classifier:hover h4 {
+    color: var(--accent-pink);
+}
+
+.classifier-container {
+    width: 70%;
+    margin: 0 auto;
+}

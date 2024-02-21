@@ -5,27 +5,25 @@
 {% block title %}Classifier List{% endblock %}
 
 {% block content %}
-
-
 <div class="content">
-    <h2>Base Classifiers</h2>
-    <div class="classifiers">
-        {% for classifier in base_classifiers %}
-        <div class="classifier">
-            <h3><a href="{% url 'classifier_detail' classifier.pk %}">{{ classifier.name }}</a></h3>
-            <p>{{ classifier.short_description }}</p>
+    <div class="classifier-container">
+        <h2>Classifiers</h2>
+        <div class="classifiers">
+            {% for classifier in base_classifiers %}
+            <a href="{% url 'classifier_detail' classifier.pk %}" class="classifier-link">
+                <div class="classifier">
+                    <h4>{{ classifier.name }}</h4>
+                </div>
+            </a>
+            {% endfor %}
+            {% for classifier in ensemble_classifiers %}
+            <a href="{% url 'classifier_detail' classifier.pk %}" class="classifier-link">
+                <div class="classifier">
+                    <h4>{{ classifier.name }}</h4>
+                </div>
+            </a>
+            {% endfor %}
         </div>
-        {% endfor %}
-    </div>
-
-    <h2>Ensemble Classifiers</h2>
-    <div class="classifiers">
-        {% for classifier in ensemble_classifiers %}
-        <div class="classifier">
-            <h3><a href="{% url 'classifier_detail' classifier.pk %}">{{ classifier.name }}</a></h3>
-            <p>{{ classifier.short_description }}</p>
-        </div>
-        {% endfor %}
     </div>
 </div>
 {% endblock %}
