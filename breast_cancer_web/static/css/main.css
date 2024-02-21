@@ -100,7 +100,9 @@ button:hover {
 
 .logo a:hover {
     color: var(--accent-pink);
-    transition: 0.3s
+    text-shadow: 0 0 30px var(--accent-pink);
+    text-size-adjust: 1.01;
+    transition: 0.3s;
 }
 
 .header-container {
@@ -132,7 +134,9 @@ nav ul li a {
 
 nav ul li a:hover {
     color: var(--accent-pink);
-    transition: 0.3s
+    text-shadow: 0 0 30px var(--accent-pink);
+    scale: 1.01;
+    transition: 0.3s;
 }
 
 header {
@@ -163,7 +167,7 @@ header {
 
 .right-content {
     position: absolute;
-    top: 50%;
+    top: 45%;
     left: 42%;
     transform: translateY(-50%);
 }
@@ -172,7 +176,7 @@ header {
     font-size: 150px;
     color: var(--black);
     line-height: 180px;
-    margin-bottom: 10px;
+    margin-bottom: 50px;
 }
 
 .right-content h4 {
@@ -198,6 +202,8 @@ header {
 
 .content a:hover {
     color: var(--accent-pink);
+    text-shadow: 0 0 30px var(--accent-pink);
+    scale: 1.01;
     transition: 0.3s;
 }
 
@@ -271,7 +277,10 @@ header {
 }
 
 .btn1:hover {
+    background-color: var(--accent-pink);
     box-shadow: 0 0 30px var(--accent-pink);
+    scale: 1.01;
+    transition: 0.3s;
 }
 
 .footer-container {
@@ -440,6 +449,15 @@ header {
 
 .details__summary:hover {
     background-color: var(--accent-pink);
+    box-shadow: 0 0 30px var(--accent-pink);
+    scale: 1.01;
+    transition: 0.3s;
+}
+
+.select:hover {
+    background-color: var(--accent-pink);
+    box-shadow: 0 0 30px var(--accent-pink);
+    scale: 1.01;
     transition: 0.3s;
 }
 
@@ -456,4 +474,39 @@ header {
     margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
+}
+
+.comparison-table {
+    display: flex;
+    justify-content: center;
+}
+
+.comparison-table table {
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    border-collapse: collapse;
+}
+
+.comparison-table th,
+.comparison-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+.comparison-table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background-color: var(--plum-web);
+    color: var(--black);
+}
+
+.comparison-table tr td:first-child {
+    font-weight: bold;
+}
+
+.plot-table {
+    display: flex;
+    justify-content: center;
 }

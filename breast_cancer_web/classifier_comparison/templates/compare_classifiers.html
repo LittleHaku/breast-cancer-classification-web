@@ -25,7 +25,7 @@
         <div class="dropdowns">
             {% csrf_token %}
             <label for="classifier1">Classifier 1:</label>
-            <select name="classifier1" id="classifier1">
+            <select name="classifier1" id="classifier1" class="select">
                 {% for classifier in classifiers %}
                 <option value="{{ classifier.id }}">{{ classifier.name }}</option>
 
@@ -33,7 +33,7 @@
             </select>
             <br>
             <label for="classifier2">Classifier 2:</label>
-            <select name="classifier2" id="classifier2">
+            <select name="classifier2" id="classifier2" class="select">
                 {% for classifier in classifiers %}
                 <option value="{{ classifier.id }}">{{ classifier.name }}</option>
                 {% endfor %}
