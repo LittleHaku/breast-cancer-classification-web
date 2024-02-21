@@ -165,8 +165,19 @@ header {
     position: relative;
     margin-top: 100px;
     margin-bottom: 20px;
-    margin-left: 5%;
+    text-align: center;
 
+}
+
+.content a {
+    text-decoration: none;
+    color: var(--plum-web-2);
+    font-weight: bold;
+}
+
+.content a:hover {
+    color: var(--accent-pink);
+    transition: 0.3s;
 }
 
 .content h1 {
@@ -174,6 +185,22 @@ header {
     color: var(--black);
     line-height: 180px;
     margin-bottom: 10px;
+}
+
+.content h2 {
+    font-size: 30px;
+    color: var(--black);
+    margin-bottom: 10px;
+    margin-top: 10px;
+    text-align: center;
+
+}
+
+.content h3 {
+    font-size: 25px;
+    color: var(--black);
+    margin-bottom: 10px;
+    text-align: center;
 }
 
 .content h4 {
@@ -200,7 +227,7 @@ header {
 .dropdowns select {
     margin-top: 10px;
     text-align: center;
-    width: 30%;
+    width: 40%;
     display: inline-block;
     box-sizing: border-box;
     outline: none;
@@ -222,4 +249,15 @@ header {
     color: var(--white);
     padding: 30px 0;
     text-align: center;
+}
+
+.comparison-table {
+    display: flex;
+    justify-content: center;
+}
+
+.comparison-table table {
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
 }
