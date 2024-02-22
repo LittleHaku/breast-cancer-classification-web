@@ -67,6 +67,25 @@ select {
 
 }
 
+
+#lateral-menu {
+    position: fixed;
+    left: 0;
+    top: 10%;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+#lateral-menu div {
+    padding: 10px;
+}
+
+#lateral-menu .active {
+    background-color: var(--accent-pink);
+}
+
 .scrollable-content {
     scroll-snap-type: y mandatory;
     overflow-y: scroll;

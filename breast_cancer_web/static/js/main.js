@@ -30,12 +30,13 @@ $(document).ready(function () {
         }, 500);
     });
 
+    // disappear header on scroll
     var scrollableContent = document.querySelector('.scrollable-content');
 
     scrollableContent.addEventListener('scroll', function () {
         var header = document.querySelector('header');
         var sectionOne = document.querySelector('.one');
-        var sectionOneHeight = sectionOne.offsetHeight/2;
+        var sectionOneHeight = sectionOne.offsetHeight / 2;
 
         console.log("Scroll position: " + scrollableContent.scrollTop);
         console.log("Section one height: " + sectionOneHeight);
@@ -48,6 +49,32 @@ $(document).ready(function () {
             header.classList.remove('hide-header');
         }
     });
+
+
+    // indicate section
+    window.onload = function () {
+        menuItems[0].classList.add('active');
+    };
+
+    var scrollableContent = document.querySelector('.scrollable-content');
+    var sections = document.querySelectorAll('section');
+    var menuItems = document.querySelectorAll('#lateral-menu div');
+    var header = document.querySelector('header');
+    var headerHeight = header.offsetHeight;
+
+    scrollableContent.addEventListener('scroll', function () {
+        sections.forEach((section, index) => {
+            var sectionTop = section.offsetTop - headerHeight;
+            var sectionBottom = sectionTop + section.offsetHeight;
+
+            if (scrollableContent.scrollTop >= sectionTop && scrollableContent.scrollTop < sectionBottom) {
+                menuItems.forEach(item => item.classList.remove('active'));
+                menuItems[index].classList.add('active');
+            }
+        });
+    });
+
+
 
 
 

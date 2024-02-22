@@ -7,9 +7,19 @@
 
 {% block content %}
 
+<div id="lateral-menu">
+    <div data-section="one" class="active">Section 1</div>
+    <div data-section="two">Section 2</div>
+    <div data-section="three">Section 3</div>
+    <div data-section="four">Section 4</div>
+    <div data-section="five">Section 5</div>
+    <div data-section="six">Section 6</div>
+    <div data-section="seven">Section 7</div>
+</div>
+
 
 <div class="scrollable-content">
-    <section>
+    <section class="one">
         <h1>Classifiers</h1>
         <h3>Welcome to the Breast Cancer Classifier Comparison Web App</h3>
         <p>
@@ -17,27 +27,27 @@
         </p>
     </section>
 
-    <section class="one">
+    <section class="two">
         <h1>What is a classifier?</h1>
         <p>short explanation about classifers</p>
     </section>
-    <section class="two">
+    <section class="three">
         <h1>How do we compare classifiers?</h1>
         <p>say that we use metrics and confusion matrices</p>
     </section>
-    <section class="three">
+    <section class="four">
         <h1>What are these metrics?</h1>
         <p>explain that there are more but the ones that we use</p>
     </section>
-    <section class="four">
+    <section class="five">
         <h1>What features are we using?</h1>
         <p>explain that we are using the features from the dataset</p>
     </section>
-    <section class="five">
+    <section class="six">
         <h1>How do we see which features are important?</h1>
         <p>explain beeswarm plot</p>
     </section>
-    <section class="six">
+    <section class="seven">
         <h1>How do we understand the decision made</h1>
         <p>waterfall plots</p>
     </section>
