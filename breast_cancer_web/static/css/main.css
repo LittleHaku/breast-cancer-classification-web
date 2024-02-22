@@ -305,6 +305,11 @@ header {
     width: 50%;
 }
 
+.metrics-table {
+    margin: auto;
+    width: 30%;
+}
+
 
 .nav_lat {
     list-style: none;
@@ -555,7 +560,7 @@ header {
     margin: 0 auto;
 }
 
-.classifier-detail p {
+.content p {
     width: 50%;
     margin: auto;
     color: #1a1a1a;
