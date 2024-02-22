@@ -1,6 +1,7 @@
 $(document).ready(function () {
     console.log("script loaded");
 
+    // smooth dropdown
     $(".details__summary").click(function () {
         var content = $(this).next();
         if (content.css('max-height') != '0px') {
@@ -15,6 +16,7 @@ $(document).ready(function () {
         }
     });
 
+    // return to top
     $(window).scroll(function () {
         if ($(this).scrollTop() >= 50) {
             $('#go-top').fadeIn(200);
@@ -27,4 +29,26 @@ $(document).ready(function () {
             scrollTop: 0
         }, 500);
     });
+
+    var scrollableContent = document.querySelector('.scrollable-content');
+
+    scrollableContent.addEventListener('scroll', function () {
+        var header = document.querySelector('header');
+        var sectionOne = document.querySelector('.one');
+        var sectionOneHeight = sectionOne.offsetHeight/2;
+
+        console.log("Scroll position: " + scrollableContent.scrollTop);
+        console.log("Section one height: " + sectionOneHeight);
+
+        if (scrollableContent.scrollTop > sectionOneHeight) {
+            console.log("Hiding header");
+            header.classList.add('hide-header');
+        } else {
+            console.log("Showing header");
+            header.classList.remove('hide-header');
+        }
+    });
+
+
+
 });
