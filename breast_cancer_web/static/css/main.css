@@ -70,7 +70,7 @@ select {
 
 #lateral-menu {
     position: fixed;
-    left: 0;
+    left: 15px;
     top: 10%;
     height: 80vh;
     display: flex;
@@ -80,10 +80,27 @@ select {
 
 #lateral-menu div {
     padding: 10px;
+    text-decoration: none;
+    color: var(--black);
+    font-size: 15px;
+    flex-flow: column wrap;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+#lateral-menu div:hover {
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
 }
 
 #lateral-menu .active {
-    background-color: var(--accent-pink);
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.25) 50%, rgba(255, 255, 255, 0) 100%);
+    font-weight: bold;
+    transition: 0.3s;
 }
 
 .scrollable-content {
