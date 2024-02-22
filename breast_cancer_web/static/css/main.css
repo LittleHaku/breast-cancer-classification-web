@@ -48,7 +48,7 @@ body::-webkit-scrollbar-thumb {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Inter, sans-serif;
+    font-family: Poppins, sans-serif;
 }
 
 body {
@@ -224,13 +224,23 @@ header {
     color: var(--black);
     line-height: 180px;
     margin-bottom: 50px;
+    letter-spacing: 3px;
 }
 
-.right-content h4 {
+.right-content h3 {
     font-size: 25px;
     color: var(--black);
     letter-spacing: 1px;
     margin-bottom: 40px;
+}
+
+.right-content h4 {
+    font-size: 20px;
+    color: var(--black);
+    font-weight: 500;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    margin-right: 5%;
 }
 
 .content {

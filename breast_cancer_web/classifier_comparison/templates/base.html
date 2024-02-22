@@ -4,19 +4,25 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Breast Cancer Classifier{% endblock %}</title>
     <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.png' %}">
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
     <link rel="preconnect" href="https://rsms.me/">
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="{% static 'js/main.js' %}"></script>
 </head>
+
 <body>
     <div>
         <header>
@@ -31,18 +37,18 @@
         </header>
     </div>
 
-    
+
     {% block content %}
     {% endblock %}
-    
-    
+
+
     <div class="footer-container">
         <footer>
             <p>IMPORTANT: These values have been obtained using the Test Set (30%), see the home page for more info.</p>
             <p>&copy; {% now "Y" %} Iván Sotillo del Horno</p>
         </footer>
     </div>
-    
+
     <a href="javascript:" id="go-top"><i class="icon-chevron-up"></i></a>
 
 </body>
