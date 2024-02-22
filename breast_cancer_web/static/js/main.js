@@ -1,6 +1,25 @@
 $(document).ready(function () {
     console.log("script loaded");
 
+    // Get all the images
+    var imgs = document.querySelectorAll(".popup-img img");
+
+    // Loop through the images
+    imgs.forEach(function (img) {
+        // When the user clicks on an image, add the active class
+        img.onclick = function () {
+            this.parentElement.classList.add("popup-img-active");
+        }
+    });
+
+    window.onclick = function (event) {
+        if (!event.target.matches('.popup-img img')) {
+            imgs.forEach(function (img) {
+                img.parentElement.classList.remove("popup-img-active");
+            });
+        }
+    }
+
     // smooth dropdown
     $(".details__summary").click(function () {
         var content = $(this).next();
@@ -69,27 +88,27 @@ $(document).ready(function () {
         });
     });
 
-    scrollableContent.addEventListener('scroll', function() {
+    scrollableContent.addEventListener('scroll', function () {
         sections.forEach((section, index) => {
             var sectionTop = section.offsetTop - headerHeight;
             var sectionBottom = sectionTop + section.offsetHeight;
-    
+
             if (scrollableContent.scrollTop >= sectionTop && scrollableContent.scrollTop < sectionBottom) {
                 menuItems.forEach(item => item.classList.remove('active'));
                 menuItems[index].classList.add('active');
-    
+
                 var bgColor = window.getComputedStyle(section).backgroundColor;
-    
-                
+
+
                 var match = bgColor.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
                 var red = parseInt(match[1]);
                 var green = parseInt(match[2]);
                 var blue = parseInt(match[3]);
-    
-                
+
+
                 var brightness = Math.round(((red * 299) + (green * 587) + (blue * 114)) / 1000);
-    
-               
+
+
                 if (brightness < 128) {
                     menuItems.forEach(item => item.style.color = 'white');
                 } else {
@@ -98,7 +117,6 @@ $(document).ready(function () {
             }
         });
     });
-    
 
 
 

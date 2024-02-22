@@ -59,7 +59,10 @@
         <h1>What is a Confusion Matrix?</h1>
         <p>Apart from these metrics, we can use a confusion matrix to see at a glance how the classifier is performing.
             It shows the number of true positives, true negatives, false positives, and false negatives.</p>
-        <img src="{% static 'confusion_matrices/cm_Logistic_Regression.png' %}" alt="Confusion Matrix">
+        <div class="popup-img" id="popup-img">
+            <img class="confusion-plot" src="{% static 'confusion_matrices/cm_Logistic_Regression.png' %}"
+                alt="Confusion Matrix">
+        </div>
     </section>
 
     <section class="five dark-slide">
@@ -106,7 +109,11 @@
         <p>To see which features are important we will use SHAP, which explains the output of machine learning models.
             With this we will obtain a bar and a Beeswarm plot to see which features are the most important for the
             model. These plots will be understood better once it's seen in a real example (comparison or detail).</p>
-        <img class="feature-plot" src="{% static 'shap_plots/global/beeswarm_Logistic_Regression.png' %}" alt="Beeswarm Plot">
+        <div class="popup-img" id="popup-img">
+
+            <img class="feature-plot" src="{% static 'shap_plots/global/beeswarm_Logistic_Regression.png' %}"
+                alt="Beeswarm Plot">
+        </div>
     </section>
     <section class="eight">
         <h1>How do we understand the decision made</h1>
@@ -115,9 +122,11 @@
 
         <p>This is really interesting because it is what makes the model interpretable and explainable, which is what
             could help a doctor to make a decision based on what the model is saying.</p>
-
-        <img class="waterfall-plot" src="{% static 'shap_plots/local_analysis/Logistic_Regression/closest_to_boundary/instance_143.png' %}"
-            alt="Waterfall Plot">
+        <div class="popup-img" id="popup-img">
+            <img class="waterfall-plot"
+                src="{% static 'shap_plots/local_analysis/Logistic_Regression/closest_to_boundary/instance_143.png' %}"
+                alt="Waterfall Plot">
+        </div>
     </section>
     <section class="nine">
         <h1>Important Note</h1>

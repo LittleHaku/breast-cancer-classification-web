@@ -112,9 +112,10 @@
           </tr>
         </table>
       </div>
-      <img src="{% static metric.confusion_matrix %}" alt="Confusion Matrix" style="max-width: 800px; height: auto;">
+      <div class="popup-img" id="popup-img">
+        <img class="plot-img" src="{% static metric.confusion_matrix %}" alt="Confusion Matrix">
+      </div>
     </div>
-
     <h3 id="importance">Feature Importance</h3>
 
     <p>In both plots the features are ranked by importance, with the most important feature at the top.</p>
@@ -125,12 +126,15 @@
     <div class="plots">
       <div>
         <h4>Bar Plot</h4>
-        <img src="{% static metric.global_features_plot %}" alt="Global Features Plot"
-          style="max-width: 800px; height: auto;">
+        <div class="popup-img" id="popup-img">
+          <img class="plot-img" src="{% static metric.global_features_plot %}" alt="Global Features Plot">
+        </div>
       </div>
       <div>
         <h4>Beeswarm Plot</h4>
-        <img src="{% static metric.beeswarm_plot %}" alt="Beeswarm Plot" style="max-width: 800px; height: auto;">
+        <div class="popup-img" id="popup-img">
+          <img class="plot-img" id="popup-img" src="{% static metric.beeswarm_plot %}" alt="Beeswarm Plot">
+        </div>
       </div>
     </div>
     {% endfor %}
@@ -152,9 +156,15 @@
     <detail class="details">
       <summary class="details__summary">Click here to see {{ feature.name }}</summary>
       <div class="details__content">
-        <img src="{% static feature.mean_path %}" alt="Mean Plot" style="max-width: 500px; height: auto;">
-        <img src="{% static feature.error_path %}" alt="Error Plot" style="max-width: 500px; height: auto;">
-        <img src="{% static feature.worst_path %}" alt="Worst Plot" style="max-width: 500px; height: auto;">
+        <div class="popup-img" id="popup-img">
+          <img class="plot-img" id="popup-img" src="{% static feature.mean_path %}" alt="Mean Plot">
+        </div>
+        <div class="popup-img" id="popup-img">
+          <img class="plot-img" id="popup-img" src="{% static feature.error_path %}" alt="Error Plot">
+        </div>
+        <div class="popup-img" id="popup-img">
+          <img class="plot-img" id="popup-img" src="{% static feature.worst_path %}" alt="Worst Plot">
+        </div>
       </div>
     </detail>
     {% endfor %}
@@ -188,7 +198,10 @@
             {% for instance in benign_instances %}
             <tr>
               <td>
-                <img src="{% static instance.path %}" alt="Instance" style="max-width: 800px; height: auto;">
+                <div class="popup-img" id="popup-img">
+
+                  <img class="plot-img"  id="popup-img" src="{% static instance.path %}" alt="Instance">
+                </div>
               </td>
             </tr>
             {% endfor %}
@@ -204,7 +217,10 @@
             {% for instance in malignant_instances %}
             <tr>
               <td>
-                <img src="{% static instance.path %}" alt="Instance" style="max-width: 800px; height: auto;">
+                <div class="popup-img" id="popup-img">
+
+                  <img class="plot-img"  id="popup-img" src="{% static instance.path %}" alt="Instance">
+                </div>
               </td>
             </tr>
             {% endfor %}
@@ -220,7 +236,10 @@
             {% for instance in closest_instances %}
             <tr>
               <td>
-                <img src="{% static instance.path %}" alt="Instance" style="max-width: 800px; height: auto;">
+                <div class="popup-img" id="popup-img">
+
+                  <img class="plot-img"  id="popup-img" src="{% static instance.path %}" alt="Instance">
+                </div>
               </td>
             </tr>
             {% endfor %}
@@ -236,7 +255,10 @@
             {% for instance in missclassified_instances %}
             <tr>
               <td>
-                <img src="{% static instance.path %}" alt="Instance" style="max-width: 800px; height: auto;">
+                <div class="popup-img" id="popup-img">
+
+                  <img class="plot-img"  id="popup-img" src="{% static instance.path %}" alt="Instance">
+                </div>
               </td>
             </tr>
             {% endfor %}
