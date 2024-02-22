@@ -12,46 +12,120 @@
 
 <div class="scrollable-content">
     <div id="lateral-menu">
-        <div data-section="one" class="active">Section 1</div>
-        <div data-section="two">Section 2</div>
-        <div data-section="three">Section 3</div>
-        <div data-section="four">Section 4</div>
-        <div data-section="five">Section 5</div>
-        <div data-section="six">Section 6</div>
-        <div data-section="seven">Section 7</div>
+        <div data-section="one" class="active">Welcome</div>
+        <div data-section="two">Classifiers</div>
+        <div data-section="three">Compare</div>
+        <div data-section="four">Matrix</div>
+        <div data-section="five">Metrics</div>
+        <div data-section="six">Features</div>
+        <div data-section="seven">Importance</div>
+        <div data-section="eight">Examples</div>
+        <div data-section="nine">Important Note</div>
     </div>
 
     <section class="one">
-        <h1>Classifiers</h1>
-        <h3>Welcome to the Breast Cancer Classifier Comparison Web App</h3>
-        <p>
-            INFO HAS TO BE ADDED HERE
-        </p>
+        <h1>Welcome to the Breast Cancer Classifier Comparison Web</h1>
+        <p>This web is designed as a complement to my Bachelor's Thesis, where I compare different classifiers to
+            predict the diagnosis of breast cancer and then use eXplainable AI (XAI) to understand the decision made by
+            the classifiers.</p>
+        <h3>Slide to see more info</h3>
+        <div class="arrow"></div>
     </section>
+
 
     <section class="two">
         <h1>What is a classifier?</h1>
-        <p>short explanation about classifers</p>
+        <p>To understand what happens in the thesis and this web, we first have to understand what a classifier is. In
+            machine learning, a <strong>is an algorithm that given some input it gategorizes the data into a class
+            </strong>based on patterns that it has been trained to recognize.</p>
+
+        <p>In this case, we are using classifiers to predict the diagnosis of breast cancer based on the features of the
+            dataset. So it will label the data as benign or malignant.</p>
     </section>
+
     <section class="three">
-        <h1>How do we compare classifiers?</h1>
-        <p>say that we use metrics and confusion matrices</p>
+        <h1>How Do We Compare Classifiers?</h1>
+        <p>To compare these classifiers, we can use several metrics, but given the nature of the problem we will focus
+            on the ones that help us to minimize the tumors that get predicted as benign when in truth they are
+            malignant, they will get explained over the next sections.</p>
+
+        <p>Apart from this, we have confusion matrices which help use see with just four numbers how the classifier is
+            performing. In the next section we will see one.</p>
+
+
     </section>
-    <section class="four">
+
+    <section class="four dark-slide">
+        <h1>What is a Confusion Matrix?</h1>
+        <p>Apart from these metrics, we can use a confusion matrix to see at a glance how the classifier is performing.
+            It shows the number of true positives, true negatives, false positives, and false negatives.</p>
+        <img src="{% static 'confusion_matrices/cm_Logistic_Regression.png' %}" alt="Confusion Matrix">
+    </section>
+
+    <section class="five dark-slide">
         <h1>What are these metrics?</h1>
-        <p>explain that there are more but the ones that we use</p>
-    </section>
-    <section class="five">
-        <h1>What features are we using?</h1>
-        <p>explain that we are using the features from the dataset</p>
+        <p>The metrics are ordered by the importance were given during the study carried out, more information is
+            available in the thesis.</p>
+        <ul>
+            <li><strong>F1 Score:</strong> This is the harmonic mean of precision and recall, providing a balance
+                between these two metrics.</li>
+            <li><strong>Recall (Sensitivity):</strong> This is the proportion of actual positive cases (in this case,
+                patients with cancer) that the classifier correctly identified. A high recall means fewer false
+                negatives.</li>
+            <li><strong>F2 Score:</strong> This is a variant of the F1 score that gives more weight to recall. It's
+                useful when false negatives are more concerning than false positives.</li>
+            <li><strong>Balanced Accuracy:</strong> This is the average of recall obtained on each class. It's useful
+                when the data classes are imbalanced.</li>
+        </ul>
+
     </section>
     <section class="six">
-        <h1>How do we see which features are important?</h1>
-        <p>explain beeswarm plot</p>
+
+        <h1>What features are we using?</h1>
+        <p>The Wisconsin Breast Cancer dataset is composed of features computed from an image of a fine needle
+            aspirate (FNA). These features describe characteristics of the cell nuclei present in the image. Here
+            are the key features:</p>
+        <ul>
+            <li><strong>Radius:</strong> Mean of distances from center to points on the perimeter.</li>
+            <li><strong>Texture:</strong> Standard deviation of gray-scale values.</li>
+            <li><strong>Perimeter</strong></li>
+            <li><strong>Area</strong></li>
+            <li><strong>Smoothness:</strong> Local variation in radius lengths.</li>
+            <li><strong>Compactness:</strong> Perimeter² / area - 1.0.</li>
+            <li><strong>Concavity:</strong> Severity of concave portions of the contour.</li>
+            <li><strong>Concave Points:</strong> Number of concave portions of the contour.</li>
+            <li><strong>Symmetry</strong></li>
+            <li><strong>Fractal Dimension:</strong> "Coastline approximation" - 1.</li>
+        </ul>
+        <p>Each of these features is further divided into three parts: the mean, standard error, and the worst (mean
+            of the largest values), resulting in 30 features.</p>
+
     </section>
-    <section class="seven">
+    <section class="seven dark-slide">
+        <h1>How do we see which features are important?</h1>
+        <p>To see which features are important we will use SHAP, which explains the output of machine learning models.
+            With this we will obtain a bar and a Beeswarm plot to see which features are the most important for the
+            model. These plots will be understood better once it's seen in a real example (comparison or detail).</p>
+        <img class="feature-plot" src="{% static 'shap_plots/global/beeswarm_Logistic_Regression.png' %}" alt="Beeswarm Plot">
+    </section>
+    <section class="eight">
         <h1>How do we understand the decision made</h1>
-        <p>waterfall plots</p>
+        <p>Using the SHAP values we mentioned before, we can see how the model made the decision it made. This will show
+            a waterfall plot in which we can see how each feature contributed to the final decision.</p>
+
+        <p>This is really interesting because it is what makes the model interpretable and explainable, which is what
+            could help a doctor to make a decision based on what the model is saying.</p>
+
+        <img class="waterfall-plot" src="{% static 'shap_plots/local_analysis/Logistic_Regression/closest_to_boundary/instance_143.png' %}"
+            alt="Waterfall Plot">
+    </section>
+    <section class="nine">
+        <h1>Important Note</h1>
+        <p>The values shown in this web have been obtained using the Test Set (30% of the dataset), this is important to
+            note because during the thesis we have used the Train Set (70% of the dataset) to train the models and used
+            cross-validation to obtain the metrics to optimize the hyperparameters of the models. We just used the test
+            set at the very end to see how the models performed on unseen data. So expects some differences between the
+            values shown here and the ones in the thesis.</p>
     </section>
 
 </div>

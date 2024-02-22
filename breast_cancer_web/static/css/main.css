@@ -71,8 +71,8 @@ select {
 #lateral-menu {
     position: fixed;
     left: 15px;
-    top: 10%;
-    height: 80vh;
+    top: 15%;
+    height: 70vh;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -116,9 +116,42 @@ select {
 section {
     height: 100vh;
     display: flex;
+    flex-direction: column;
+    text-align: center;
     justify-content: center;
     align-items: center;
     scroll-snap-align: start;
+}
+
+section h1 {
+    margin-top: 0px;
+    font-size: 100px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    width: 80%;
+
+}
+
+section h3 {
+    font-size: 30px;
+    color: var(--black);
+    margin-top: 20px;
+    width: 80%;
+}
+
+section p {
+    width: 70%;
+    margin: auto;
+    font-size: 20px;
+    color: var(--black);
+    margin-top: 20px;
+    margin-bottom: 0px;
+}
+
+section ul {
+    text-align: left;
+    width: 70%;
+
 }
 
 .hide-header {
@@ -141,9 +174,40 @@ section {
     color: var(--black);
 }
 
+.four img {
+    width: 25%;
+    border: 1px solid var(--white);
+    border-radius: 10px;
+    margin-top: 20px;
+    box-shadow: 0 0 30px var(--light-pink);
+
+}
+
+
+.dark-slide h1 {
+    color: var(--white);
+}
+
 .four {
     background: var(--accent-pink);
-    color: var(--black);
+    color: var(--white);
+}
+
+
+.dark-slide p {
+    color: var(--white);
+}
+
+.dark-slide ul {
+    color: var(--white);
+    margin-top: 20px;
+    width: 60%;
+}
+
+.dark-slide ul li {
+    margin-top: 10px;
+    font-size: 18px;
+    color: var(--white);
 }
 
 .five {
@@ -153,6 +217,43 @@ section {
 
 .six {
     background: var(--light-grey);
+    color: var(--black);
+}
+
+.six ul {
+    color: var(--black);
+    margin-top: 20px;
+    width: 50%;
+}
+
+.seven {
+    background: var(--dark-grey);
+    color: var(--white);
+}
+
+.feature-plot {
+    width: 15%;
+    border: 1px solid var(--white);
+    border-radius: 10px;
+    margin-top: 20px;
+    box-shadow: 0 0 30px var(--light-grey);
+}
+
+.waterfall-plot {
+    width: 25%;
+    border: 1px solid var(--white);
+    border-radius: 10px;
+    margin-top: 20px;
+    box-shadow: 0 0 30px var(--light-pink);
+}
+
+.eight {
+    background: var(--pink-lavender);
+    color: var(--black);
+}
+
+.nine {
+    background: var(--plum-web-2);
     color: var(--black);
 }
 
@@ -736,4 +837,43 @@ nav ul li a:hover {
     color: var(--black);
     margin-bottom: 10px;
     text-align: center;
+}
+
+.background {
+    width: 50%;
+    height: 100%;
+    object-fit: cover;
+    padding: 0;
+    margin: 0;
+    object-position: left;
+}
+
+.arrow {
+    position: relative;
+    margin-top: 20px;
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid var(--black);
+    animation: bounce 4s infinite;
+}
+
+@keyframes bounce {
+
+    0%,
+    20%,
+    40%,
+    60%,
+    100% {
+        transform: translateY(0);
+    }
+
+    30% {
+        transform: translateY(-30px);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
 }
