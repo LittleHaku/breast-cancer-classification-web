@@ -165,6 +165,9 @@ header {
     overflow: hidden;
 }
 
+
+
+
 .right-content {
     position: absolute;
     top: 45%;
@@ -550,4 +553,32 @@ header {
 .classifier-container {
     width: 70%;
     margin: 0 auto;
+}
+
+.classifier-detail p {
+    width: 50%;
+    margin: auto;
+    color: #1a1a1a;
+    padding: 0 0 1em 0;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.8;
+    text-align: justify;
+}
+
+.classifier-detail h4 {
+    margin: 0;
+    color: var(--black);
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+
+}
+
+.content h5 {
+    font-size: 25px;
+    font-weight: normal;
+    color: var(--black);
+    margin-bottom: 10px;
+    text-align: center;
 }
