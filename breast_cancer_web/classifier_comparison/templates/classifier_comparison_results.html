@@ -73,17 +73,25 @@
                 </tbody>
             </table>
         </div>
-        
+
         <h3 id="matrix">Confusion Matrices</h3>
-        <div class="confusion-matrices">
+        <table class="plot-table">
+            <tr>
+                <td>
+                    <div class="popup-img" id="popup-img1">
+                        <img src="{% static metric1.confusion_matrix %}" alt="Confusion Matrix"
+                            style="max-width: 800px; height: auto;">
+                    </div>
+                </td>
+                <td>
+                    <div class="popup-img" id="popup-img2">
+                        <img src="{% static metric2.confusion_matrix %}" alt="Confusion Matrix"
+                            style="max-width: 800px; height: auto;">
+                    </div>
+                </td>
+            </tr>
+        </table>
 
-            <img src="{% static metric1.confusion_matrix %}" alt="Confusion Matrix"
-                style="max-width: 800px; height: auto;">
-
-            <img src="{% static metric2.confusion_matrix %}" alt="Confusion Matrix"
-                style="max-width: 800px; height: auto;">
-
-        </div>
 
         <h3 id="importance">Feature Importance</h3>
 
@@ -97,13 +105,19 @@
                 <tr>
                     <td>
                         <h5>{{ classifier1.name }}</h5>
-                        <img src="{% static metric1.global_features_plot %}" alt="Global Features Plot"
-                            style="max-width: 500px; height: auto;">
+                        <div class="popup-img" id="popup-img">
+
+                            <img src="{% static metric1.global_features_plot %}" alt="Global Features Plot"
+                                style="max-width: 500px; height: auto;">
+                        </div>
                     </td>
                     <td>
                         <h5>{{ classifier2.name }}</h5>
-                        <img src="{% static metric2.global_features_plot %}" alt="Global Features Plot"
-                            style="max-width: 500px; height: auto;">
+                        <div class="popup-img" id="popup-img">
+
+                            <img src="{% static metric2.global_features_plot %}" alt="Global Features Plot"
+                                style="max-width: 500px; height: auto;">
+                        </div>
                     </td>
                 </tr>
                 <tr>
@@ -114,13 +128,19 @@
                 <tr>
                     <td>
                         <h5>{{ classifier1.name }}</h5>
-                        <img src="{% static metric1.beeswarm_plot %}" alt="Beeswarm Plot"
-                            style="max-width: 500px; height: auto;">
+                        <div class="popup-img" id="popup-img">
+
+                            <img src="{% static metric1.beeswarm_plot %}" alt="Beeswarm Plot"
+                                style="max-width: 500px; height: auto;">
+                        </div>
                     </td>
                     <td>
                         <h5>{{ classifier2.name }}</h5>
-                        <img src="{% static metric2.beeswarm_plot %}" alt="Beeswarm Plot"
-                            style="max-width: 500px; height: auto;">
+                        <div class="popup-img" id="popup-img">
+
+                            <img src="{% static metric2.beeswarm_plot %}" alt="Beeswarm Plot"
+                                style="max-width: 500px; height: auto;">
+                        </div>
                     </td>
                 </tr>
             </table>
@@ -141,24 +161,43 @@
                             <td>
                                 <div class="feature">
                                     <h5>{{ classifier1.name }}</h5>
-                                    <img src="{% static feature1.mean_path %}" alt="Mean Plot"
-                                        style="max-width: 500px; height: auto;">
-                                    <img src="{% static feature1.error_path %}" alt="Error Plot"
-                                        style="max-width: 500px; height: auto;">
-                                    <img src="{% static feature1.worst_path %}" alt="Worst Plot"
-                                        style="max-width: 500px; height: auto;">
+                                    <div class="popup-img" id="popup-img">
+
+                                        <img src="{% static feature1.mean_path %}" alt="Mean Plot"
+                                            style="max-width: 500px; height: auto;">
+                                    </div>
+                                    <div class="popup-img" id="popup-img">
+
+                                        <img src="{% static feature1.error_path %}" alt="Error Plot"
+                                            style="max-width: 500px; height: auto;">
+                                    </div>
+                                    <div class="popup-img" id="popup-img">
+
+                                        <img src="{% static feature1.worst_path %}" alt="Worst Plot"
+                                            style="max-width: 500px; height: auto;">
+                                    </div>
+
                                 </div>
 
                             </td>
                             <td>
                                 <div class="feature">
                                     <h5>{{ classifier2.name }}</h5>
-                                    <img src="{% static feature2.mean_path %}" alt="Mean Plot"
-                                        style="max-width: 500px; height: auto;">
-                                    <img src="{% static feature2.error_path %}" alt="Error Plot"
-                                        style="max-width: 500px; height: auto;">
-                                    <img src="{% static feature2.worst_path %}" alt="Worst Plot"
-                                        style="max-width: 500px; height: auto;">
+                                    <div class="popup-img" id="popup-img">
+
+                                        <img src="{% static feature2.mean_path %}" alt="Mean Plot"
+                                            style="max-width: 500px; height: auto;">
+                                    </div>
+                                    <div class="popup-img" id="popup-img">
+
+                                        <img src="{% static feature2.error_path %}" alt="Error Plot"
+                                            style="max-width: 500px; height: auto;">
+                                    </div>
+                                    <div class="popup-img" id="popup-img">
+
+                                        <img src="{% static feature2.worst_path %}" alt="Worst Plot"
+                                            style="max-width: 500px; height: auto;">
+                                    </div>
                                 </div>
                             </td>
                         </tr>
