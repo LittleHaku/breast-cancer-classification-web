@@ -31,7 +31,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["breastcancerclassifiers.up.railway.app", "localhost", "breast-cancer-classification-web.onrender.com", "127.0.0.1"
+ALLOWED_HOSTS = ["breastcancerclassifiers.up.railway.app", "localhost", "breast-cancer-classification-web.onrender.com", "127.0.0.1"]
 
 
 # Application definition
